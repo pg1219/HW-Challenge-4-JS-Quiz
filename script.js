@@ -10,9 +10,9 @@ var currentQuestionIndex = 0;
 var time = questions.length * 15;
 var timerId;
 
-// startButton.addEventListener("click", function() {
-//   startQuiz();
-// });
+startBtn.addEventListener("click", function() {
+  startQuiz()
+});  
 
 
 function startQuiz() {
@@ -55,10 +55,8 @@ function getQuestion() {
 
     choiceNode.textContent = i + 1 + ". " + choice;
 
-    // attach click event listener to each choice
     choiceNode.onclick = questionClick;
-
-    // display on the page
+ 
     choicesEl.appendChild(choiceNode);
   });
 }

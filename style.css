@@ -8,20 +8,14 @@
   }
 
 
+h1 {
+  color: blue;
+  background-color: rgb(183, 195, 196);
+  
+}
+
 
 .hide {
   display: none;
-}
 
-h1 {
-    color: blue;
-    background-color: rgb(183, 195, 196);
-
-}
-
-.startButtons {
-    margin: auto;
-    width: 100%;
-    height: 100px;
-    text-align: center;
 }
