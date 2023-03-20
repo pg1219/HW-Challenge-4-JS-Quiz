@@ -1,4 +1,4 @@
-const questions = [
+var questions = [
   {
     question:
       "A very useful tool used during development and debugging for printing content to the debugger is:",

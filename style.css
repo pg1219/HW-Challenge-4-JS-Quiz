@@ -7,15 +7,19 @@
     text-align: center;
   }
 
+  .hide {
+    display: none;
+  }
 
 h1 {
   color: blue;
   background-color: rgb(183, 195, 196);
-  
 }
 
+p {
+  margin: 100px, auto, 0, auto
+}
 
-.hide {
-  display: none;
-
+.choices button{
+  display: block;
 }

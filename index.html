@@ -12,7 +12,7 @@
     <!-- add href to this -->
     <div><p>View Highscores</p></div>
     <div class="timer">
-      <p id="time">Timer:</p>
+      <p>Timer: <span  id="time"></span></p>
     </div>
     <div id="start-screen">
       <div class="container">
@@ -23,7 +23,7 @@
           will be penalized by losing time on the timer by 10 seconds. Good
           luck!
         </p>
-        <button class="startBtn">Start Quiz</button>
+        <button id="start">Start Quiz</button>
       </div>
     </div>
 
@@ -31,7 +31,7 @@
       <h2 id="question-title"></h2>
       <div id="choices" class="choices"></div>
     </div>
-
+   
     <div id="countdown"></div>
 
     <script src="questions.js"></script>

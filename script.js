@@ -7,7 +7,7 @@ var initialsEl = document.querySelector("#initials");
 var feedbackEl = document.querySelector("#feedback")
 
 var currentQuestionIndex = 0;
-var time = questions.length * 15;
+var time = questions.length * 1;
 var timerId;
 
 startBtn.addEventListener("click", function() {
@@ -32,7 +32,8 @@ function clockTick() {
   time--;
   timerEl.textContent = time;
 
-  if (time <= 0) {
+  if (time <= 0) { 
+    clearInterval(timerId);
     console.log("Quiz is over!");
   }
 }
@@ -40,6 +41,8 @@ function clockTick() {
 
 
 function getQuestion() {
+
+
   var currentQuestion = questions[currentQuestionIndex];
 
   var titleEl = document.getElementById("question-title");
