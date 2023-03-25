@@ -36,9 +36,8 @@ function getQuestion() {
     choices.setAttribute("value", choice);
 
     choices.textContent = i + 1 + ". " + choice;
-    
+
     choices.onclick = questionClick;
-    
 
     choicesEl.appendChild(choices);
   });
@@ -86,16 +85,16 @@ function clockTick() {
   }
 }
 
-
 function saveHighScore() {
   var initials = initialsEl.value.trim();
 
   if (initials !== "") {
-   var highscores = JSON.parse(window.localStorage.getItem("highscores")) || "";
+    var highscores =
+      JSON.parse(window.localStorage.getItem("highscores")) || [];
 
     var newScore = {
       score: time,
-      initials: initials
+      initials: initials,
     };
 
     highscores.push(newScore);
@@ -111,34 +110,22 @@ function checkForEnter(event) {
   }
 }
 
-function publishHighScores(){
+function publishHighScores() {
   var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
-  highscores.sort(function(a, b){
+  highscores.sort(function (a, b) {
     return b.score - a.score;
-  })
+  });
 
-highscores.forEach(function(score){
-  var liEl = document.createElement("li")
-  liEl.textContent = score.initials + score.score
+  highscores.forEach(function (score) {
+    var liEl = document.createElement("li");
+    liEl.textContent = score.initials + score.score;
 
-
-var olEL = document.getElementById("highscores")
-olEL.appendChild(liEl)})
+    var olEL = document.getElementById("highscores");
+    olEL.appendChild(liEl);
+  });
 }
 
-publishHighScores()
-
-
-
-
-
-
-
-
-
-
-
-
+publishHighScores();
 
 startBtn.addEventListener("click", function () {
   startQuiz();
