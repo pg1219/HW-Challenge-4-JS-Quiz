@@ -9,6 +9,20 @@ var currentQuestionIndex = 0;
 var time = questions.length * 15;
 var timerId;
 
+function clockTick() {
+  time--;
+  timerEl.textContent = time;
+  
+  if (time <= 0) { 
+    endQuiz();
+  }
+}
+
+function endQuiz() {
+  clearInterval(timerId)
+}
+
+console.log(endQuiz)
 
 function startQuiz() {
   var startScreenEl = document.getElementById("start-screen");
@@ -69,9 +83,14 @@ function questionClick(event) {
 
   if (time <= 0 || currentQuestionIndex === questions.length) {
   
-    quizEnd();
+    endQuiz();
   } else {
   
     getQuestion();
   }
 }
+
+
+startBtn.addEventListener("click", function() {
+  startQuiz()
+}); 
