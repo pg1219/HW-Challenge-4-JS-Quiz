@@ -52,9 +52,12 @@ function getQuestion() {
   });
 }
 
-function questionClick() {
+
+
+function questionClick(event) {
+  var buttonEl = event.target;
   
-  if (this.value !== questions[currentQuestionIndex].answer) {
+  if (buttonEl.value !== questions[currentQuestionIndex].answer) {
     
     time -= 10;
     
@@ -62,19 +65,13 @@ function questionClick() {
       time = 0;
     }
   }
-}
-currentQuestionIndex++;
+  currentQuestionIndex++;
 
-function clockTick() {
-  time--;
-  timerEl.textContent = time;
+  if (time <= 0 || currentQuestionIndex === questions.length) {
   
-  if (time <= 0) { 
-    clearInterval(timerId);
+    quizEnd();
+  } else {
+  
+    getQuestion();
   }
 }
-
-startBtn.addEventListener("click", function() {
-  startQuiz()
-});  
-
