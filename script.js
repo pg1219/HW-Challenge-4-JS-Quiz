@@ -9,20 +9,6 @@ var currentQuestionIndex = 0;
 var time = questions.length * 15;
 var timerId;
 
-function clockTick() {
-  time--;
-  timerEl.textContent = time;
-  
-  if (time <= 0) { 
-    endQuiz();
-  }
-}
-
-function endQuiz() {
-  clearInterval(timerId)
-}
-
-console.log(endQuiz)
 
 function startQuiz() {
   var startScreenEl = document.getElementById("start-screen");
@@ -48,7 +34,6 @@ function getQuestion() {
   titleEl.textContent = currentQuestion.title;
   
   choicesEl.innerHTML = "";
-  console.log(choices.innerHTML)
   
   currentQuestion.choices.forEach(function (choice, i) {
     
@@ -77,8 +62,10 @@ function questionClick(event) {
     
     if (time < 0) {
       time = 0;
-    }
+    } 
+    timerEl.textContent = time
   }
+  
   currentQuestionIndex++;
 
   if (time <= 0 || currentQuestionIndex === questions.length) {
@@ -89,6 +76,32 @@ function questionClick(event) {
     getQuestion();
   }
 }
+
+function endQuiz() {
+  clearInterval(timerId)
+}
+
+questionsEl.setAttribute("class", "hide")
+
+var endScreen = document.getElementById("end-screen")
+endScreen.removeAttribute("class")
+
+var finalScoreEl = document.getElementById("final-score")
+finalScoreEl.textContent = time
+
+
+
+
+function clockTick() {
+  time--;
+  timerEl.textContent = time;
+  
+  if (time <= 0) { 
+    endQuiz();
+  }
+}
+
+
 
 
 startBtn.addEventListener("click", function() {
