@@ -110,22 +110,6 @@ function checkForEnter(event) {
   }
 }
 
-function publishHighScores() {
-  var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
-  highscores.sort(function (a, b) {
-    return b.score - a.score;
-  });
-
-  highscores.forEach(function (score) {
-    var liEl = document.createElement("li");
-    liEl.textContent = score.initials + score.score;
-
-    var olEL = document.getElementById("highscores");
-    olEL.appendChild(liEl);
-  });
-}
-
-publishHighScores();
 
 startBtn.addEventListener("click", function () {
   startQuiz();

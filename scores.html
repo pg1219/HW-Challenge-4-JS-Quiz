@@ -10,12 +10,30 @@
 
   <body>
     <div>
-       <h1>High Scores</h1>
-       <ol id="highscores"></ol>
+      <h1>High Scores</h1>
+      <ol id="highscores"></ol>
 
-       <a href="index.html"><button>Go Back</button></a>
+      <a href="index.html"><button>Go Back</button></a>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+      function publishHighScores() {
+        var highscores =
+          JSON.parse(window.localStorage.getItem("highscores")) || [];
+        highscores.sort(function (a, b) {
+          return b.score - a.score;
+        });
+
+        highscores.forEach(function (score) {
+          var liEl = document.createElement("li");
+          liEl.textContent = score.initials + " - " + score.score;
+
+          var olEL = document.getElementById("highscores");
+          olEL.appendChild(liEl);
+        });
+      }
+
+      publishHighScores();
+    </script>
   </body>
 </html>
